@@ -1,8 +1,8 @@
 module.exports = function(client) {
 
   client.query(`CREATE TABLE broker__c (
-   id SERIAL PRIMARY KEY NOT NULL,
-   sfid CHARACTER VARYING(18) UNIQUE,
+   id SERIAL NOT NULL,
+   sfid CHARACTER VARYING(18) UNIQUE PRIMARY KEY,
    name CHARACTER VARYING(80),
    email__c CHARACTER VARYING(80),
    phone__c CHARACTER VARYING(40),
@@ -12,8 +12,8 @@ module.exports = function(client) {
   );`);
 
   client.query(`CREATE TABLE property__c (
-   id SERIAL PRIMARY KEY NOT NULL,
-   sfid CHARACTER VARYING(18) UNIQUE,
+   id SERIAL NOT NULL,
+   sfid CHARACTER VARYING(18) UNIQUE PRIMARY KEY,
    name CHARACTER VARYING(80),
    thumbnail__c CHARACTER VARYING(255),
    beds__c DOUBLE PRECISION,
@@ -32,8 +32,8 @@ module.exports = function(client) {
   );`);
 
   client.query(`CREATE TABLE favorite__c (
-   id SERIAL PRIMARY KEY NOT NULL,
-   sfid CHARACTER VARYING(18) UNIQUE,
+   id SERIAL NOT NULL,
+   sfid CHARACTER VARYING(18) UNIQUE PRIMARY KEY,
    property__c CHARACTER VARYING(18) REFERENCES property__c(sfid)
   );`);
 
